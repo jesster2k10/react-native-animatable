@@ -16,9 +16,11 @@ export function getAnimationNames() {
 
 export function initializeRegistryWithDefinitions(definitions) {
   Object.keys(definitions).forEach(animationName => {
-    registerAnimation(
-      animationName,
-      createAnimation(definitions[animationName]),
-    );
+    if (animationName !== '__esModule') {
+      registerAnimation(
+        animationName,
+        createAnimation(definitions[animationName]),
+      );
+    }
   });
 }
